@@ -1,11 +1,17 @@
-import { CustomerField } from '@/lib/definitions';
-import Link from 'next/link';
-import { CheckIcon, ClockIcon, CurrencyDollarIcon, UserCircleIcon } from '@heroicons/react/24/outline';
-import { Button } from '@/ui/button';
+import { CustomerField } from '@/lib/definitions'
+import Link from 'next/link'
+import {
+  CheckIcon,
+  ClockIcon,
+  CurrencyDollarIcon,
+  UserCircleIcon,
+} from '@heroicons/react/24/outline'
+import { Button } from '@/ui/button'
+import { createInvoice } from '@/lib/actions'
 
 export default function Form({ customers }: { customers: CustomerField[] }) {
   return (
-    <form>
+    <form action={createInvoice}>
       <div className="rounded-md bg-gray-50 p-4 md:p-6">
         {/* Customer Name */}
         <div className="mb-4">
@@ -54,7 +60,9 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
 
         {/* Invoice Status */}
         <fieldset>
-          <legend className="mb-2 block text-sm font-medium">Set the invoice status</legend>
+          <legend className="mb-2 block text-sm font-medium">
+            Set the invoice status
+          </legend>
           <div className="rounded-md border border-gray-200 bg-white px-[14px] py-3">
             <div className="flex gap-4">
               <div className="flex items-center">
@@ -101,5 +109,5 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
         <Button type="submit">Create Invoice</Button>
       </div>
     </form>
-  );
+  )
 }
